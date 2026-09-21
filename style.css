@@ -1,0 +1,867 @@
+/* ==========================================================================
+   Fonts (self-hosted, variable, latin subset)
+   ========================================================================== */
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("fonts/space-grotesk-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/plus-jakarta-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("fonts/jetbrains-mono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+
+:root {
+  --yellow: #ffc700;
+  --charcoal: #383838;
+  --gray: #a6a6a6;
+  --off-white: #e6e6e6;
+  --white: #ffffff;
+
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --header-height: 64px;
+  --gutter: 20px;
+  --radius: 10px;
+  --radius-small: 6px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  margin: 0;
+  background: var(--charcoal);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+p,
+ul,
+ol,
+figure,
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+.accent {
+  color: var(--yellow);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.container--medium {
+  max-width: 1000px;
+}
+
+.container--narrow {
+  max-width: 760px;
+}
+
+/* ==========================================================================
+   Button
+   ========================================================================== */
+
+.button {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-small);
+  background: var(--yellow);
+  color: var(--charcoal);
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.button:hover {
+  background: var(--white);
+}
+
+.button--small {
+  padding: 0.6rem 1rem;
+  font-size: 0.9375rem;
+}
+
+.button--large {
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+}
+
+.button--dark {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+.button--dark:hover {
+  background: var(--yellow);
+  color: var(--charcoal);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  height: var(--header-height);
+  background: var(--charcoal);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.site-header__logo {
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+/* Mobile + tablet: the menu is a dropdown opened by the burger button. */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0 10px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.menu-toggle__bar {
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--white);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .menu-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.site-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1rem var(--gutter) 1.5rem;
+  background: var(--charcoal);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-menu.is-open {
+  display: flex;
+}
+
+.site-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.site-nav a {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--off-white);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--yellow);
+}
+
+@media (min-width: 900px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .site-menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .site-nav {
+    flex-direction: row;
+    gap: 2rem;
+    width: auto;
+    font-size: 0.9375rem;
+  }
+
+  .site-nav a {
+    padding: 0;
+    border: 0;
+  }
+}
+
+/* ==========================================================================
+   Hero
+   Layers, back to front: background photo → scrim → Patrik cutout → text.
+   Mobile: text on top, Patrik underneath, both over the same photo.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-top: var(--header-height);
+  background: #141414;
+}
+
+.hero__background,
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__background {
+  object-fit: cover;
+  object-position: 68% bottom;
+}
+
+.hero__scrim {
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 20, 20, 0.85) 0%,
+    rgba(20, 20, 20, 0.55) 55%,
+    rgba(20, 20, 20, 0) 100%
+  );
+}
+
+.hero__person {
+  position: relative;
+  z-index: 1;
+  width: min(88.4vw, 442px);
+  margin: -0.5rem -1.5rem 0 auto;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  order: -1;
+  padding-top: 2.5rem;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.hero__title {
+  color: var(--white);
+  font-size: 2.375rem;
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.hero__lead {
+  color: var(--off-white);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+.hero__support {
+  padding-left: 1rem;
+  border-left: 3px solid var(--yellow);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.hero .button {
+  margin-top: 0.25rem;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    display: block;
+    min-height: clamp(620px, 100svh, 820px);
+  }
+
+  .hero__scrim {
+    background: linear-gradient(
+      to right,
+      rgba(20, 20, 20, 0.85) 0%,
+      rgba(20, 20, 20, 0.55) 35%,
+      rgba(20, 20, 20, 0) 62%
+    );
+  }
+
+  .hero__person {
+    position: absolute;
+    right: -2vw;
+    bottom: 0;
+    width: clamp(374px, 45.9vw, 680px);
+    margin: 0;
+  }
+
+  .hero__inner {
+    display: flex;
+    align-items: center;
+    min-height: clamp(620px, 100svh, 820px);
+    padding-block: calc(var(--header-height) + 2rem) 3rem;
+    /* keeps the copy on the left half so it never runs under Patrik */
+    padding-right: 48vw;
+  }
+
+  .hero__inner .hero__content {
+    max-width: 580px;
+  }
+
+  .hero__title {
+    font-size: clamp(2.75rem, 4.4vw, 3.75rem);
+  }
+
+  .hero__lead {
+    font-size: 1.1875rem;
+  }
+}
+
+@media (min-width: 1300px) {
+  .hero__inner {
+    padding-right: var(--gutter);
+  }
+}
+
+/* ==========================================================================
+   Sections
+   ========================================================================== */
+
+.section {
+  padding-block: 4rem;
+}
+
+.section--light {
+  background: var(--off-white);
+  color: var(--charcoal);
+}
+
+.section--dark {
+  background: var(--charcoal);
+  color: var(--off-white);
+}
+
+.section__title {
+  font-size: 1.875rem;
+  line-height: 1.2;
+}
+
+.section--dark .section__title {
+  color: var(--white);
+}
+
+.section__title--center {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section__title--large {
+  font-size: 2.375rem;
+}
+
+.section__header {
+  display: grid;
+  gap: 1.25rem;
+  max-width: 760px;
+  margin-bottom: 2.5rem;
+}
+
+.section__intro {
+  display: grid;
+  gap: 1rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.section--dark .section__intro {
+  color: var(--off-white);
+}
+
+.section__action {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: 6rem;
+  }
+
+  .section__title {
+    font-size: 2.75rem;
+    line-height: 1.15;
+  }
+
+  .section__title--large {
+    font-size: 3.5rem;
+  }
+
+  .section__header {
+    margin-bottom: 3.5rem;
+  }
+
+  .section__intro {
+    font-size: 1.1875rem;
+  }
+}
+
+/* ==========================================================================
+   Cards
+   ========================================================================== */
+
+.card {
+  padding: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.card--white {
+  background: var(--white);
+  color: var(--charcoal);
+}
+
+.card--dark {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+.card--outline {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card--accent {
+  background: var(--yellow);
+  color: var(--charcoal);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: 2rem;
+  }
+}
+
+/* ==========================================================================
+   Problem
+   ========================================================================== */
+
+.problem {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.problem__story {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.problem__lead {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.thoughts {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--yellow);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.problem__turn {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.problem__turn strong {
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .problem {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+
+  .problem__turn {
+    font-size: 1.75rem;
+  }
+}
+
+/* ==========================================================================
+   Steps (How it works)
+   ========================================================================== */
+
+.steps {
+  display: grid;
+  gap: 1.25rem;
+  counter-reset: none;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.step__number {
+  color: var(--yellow);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.step__title {
+  color: var(--white);
+  font-size: 1.375rem;
+  line-height: 1.3;
+}
+
+.step p:not(.step__note) {
+  color: var(--off-white);
+}
+
+.step__note {
+  margin-top: auto;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-small);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.card--accent .step__number,
+.card--accent .step__title,
+.card--accent p:not(.step__note) {
+  color: var(--charcoal);
+}
+
+.card--accent .step__note {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+@media (min-width: 768px) {
+  .steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .step__title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Results
+   ========================================================================== */
+
+.results {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.result__title {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.result__figure {
+  padding: 0 0.25em;
+  border-radius: 4px;
+  background: var(--yellow);
+}
+
+@media (min-width: 768px) {
+  .results {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .result__title {
+    font-size: 1.875rem;
+  }
+}
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+.about {
+  display: grid;
+  gap: 4rem;
+}
+
+.about__row {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.about__text {
+  display: grid;
+  gap: 1.25rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.about__text p {
+  color: var(--off-white);
+}
+
+.about__accent {
+  color: var(--yellow) !important;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.pullquote {
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--yellow);
+  border-radius: 0 var(--radius-small) var(--radius-small) 0;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.about__photo img {
+  width: 100%;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+.about__photo--portrait img {
+  filter: grayscale(1) contrast(1.05);
+}
+
+.about__photo--portrait img {
+  aspect-ratio: 4 / 5;
+  object-position: 50% 30%;
+}
+
+.about__photo--square img {
+  aspect-ratio: 1 / 1;
+}
+
+@media (min-width: 900px) {
+  .about {
+    gap: 6rem;
+  }
+
+  .about__row {
+    grid-template-columns: 5fr 7fr;
+    gap: 4rem;
+  }
+
+  .about__row--reverse {
+    grid-template-columns: 7fr 5fr;
+  }
+
+  .about__text {
+    font-size: 1.1875rem;
+  }
+
+  .pullquote {
+    font-size: 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   Final CTA
+   ========================================================================== */
+
+.section--final {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.final {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  font-size: 1.1875rem;
+}
+
+.final p:first-of-type {
+  margin-top: 0.5rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.final p:last-of-type {
+  color: var(--gray);
+}
+
+.final .button {
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  padding-block: 2rem;
+  background: #2d2d2d;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--off-white);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.site-footer a:hover {
+  color: var(--yellow);
+}

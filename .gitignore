@@ -1,0 +1,16 @@
+# Only the deployable website is tracked. Everything at the top level is
+# ignored unless it is explicitly listed below, so working documents,
+# images-original/ and any stray files can't be committed by accident.
+/*
+!/.gitignore
+!/index.html
+!/style.css
+!/script.js
+!/favicon.ico
+!/favicon-32x32.png
+!/apple-touch-icon.png
+!/images/
+!/fonts/
+
+# macOS metadata (also inside images/ and fonts/)
+.DS_Store
